@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 mt-5">
+            <div class="card shadow-lg p-3 mb-5 bg-white>">
+                <div class="card-body">
+
+                    <form (submit)="submit()" [formGroup]="registerForm">
+                        <div class="form-row">
+                            <div class="col-lg-12">
+                                <a id="inicio" href="inicio">
+                                    <img src="assets/LogoFeriaContraste.png" class="mx-auto d-block"
+                                        alt="Logo de la feria virtual HUB Fair contraste" width="200px">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-row mt-4">
+                            <div class="col-lg-12 text-center">
+                                <p>Te enviaremos un enlace a tu correo para que puedas cambiar la contraseña</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <input class="form-control btn-input rounded-0" id="txtEmail" type="text"
+                                    placeholder="Correo Electrónico" required="true" autofocus
+                                    formControlName="txtEmail">
+                                <span *ngIf="txtEmail.invalid && (txtEmail.dirty || txtEmail.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtEmail.errors.required">
+                                        ! El campo Correo electrónico es obligatorio
+                                    </span>
+                                    <span *ngIf="txtEmail.errors.email">
+                                        ! Ingresar correo electrónico válido
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <button class="btn btn-primary btn-block btn-btn" id="btnCambiarClave" type="button"
+                                    [disabled]="registerForm.invalid">Cambiar mi contraseña</button>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <a class="text-decoration-none" href="login">
+                                <p>Regresar a inicio de sesión</p>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <div>
+                        <p>¿Aún no tienes cuenta en Virtual HUB Fair - Video?</p>
+                        <p><a class="btn btn-outline-primary btn-block btn-btn" id="btnRegistrar" href="perfil-registro"
+                                role="button">Regístrate</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

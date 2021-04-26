@@ -1,0 +1,223 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <a href="inicio">
+            <img src="assets/LogoFeriaContraste.png" alt="Logo de la feria Virtual HUB Fair contraste" width="200px">
+        </a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-5 mt-4 mb-5">
+            <div class="card p-3 mb-5">
+                <div class="card-header bg-white">
+                    <h5 class="text-center">Crear cuenta - Comprador</h5>
+                </div>
+
+                <div class="card-body">
+                    <p>Llena el siguiente formulario para registrarte. Todos los campos son obligatorios</p>
+                    <form (submit)="submit()" [formGroup]="registerForm" onSubmit="this.reset()">
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <input class="form-control rounded-0" id="txtNombresRepresentante" type="text"
+                                    placeholder="Nombres del representante" required
+                                    formControlName="txtNombresRepresentante" [(ngModel)]="cliente.nombres">
+                                <span
+                                    *ngIf="txtNombresRepresentante.invalid && (txtNombresRepresentante.dirty || txtNombresRepresentante.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtNombresRepresentante.errors.required">
+                                        ! El campo nombres del representante es obligatorio
+                                    </span>
+                                    <span *ngIf="txtNombresRepresentante.errors.minlength">
+                                        ! Mínimo de caracteres 3
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <input class="form-control rounded-0" id="txtApellidosRepresentante" type="text"
+                                    placeholder="Apellidos del representante" required
+                                    formControlName="txtApellidosRepresentante" [(ngModel)]="cliente.apellidos">
+                                <span
+                                    *ngIf="txtApellidosRepresentante.invalid && (txtApellidosRepresentante.dirty || txtApellidosRepresentante.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtApellidosRepresentante.errors.required">
+                                        ! El campo apellidos del representante es obligatorio
+                                    </span>
+                                    <span *ngIf="txtApellidosRepresentante.errors.minlength">
+                                        ! Mínimo de caracteres 3
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <input class="form-control rounded-0" id="txtNombreEmpresa" type="text"
+                                    placeholder="Nombre de la empresa" required formControlName="txtNombreEmpresa"
+                                    [(ngModel)]="cliente.nombreempresa">
+                                <span
+                                    *ngIf="txtNombreEmpresa.invalid && (txtNombreEmpresa.dirty || txtNombreEmpresa.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtNombreEmpresa.errors.required">
+                                        ! El campo nombre de la empresa es obligatorio
+                                    </span>
+                                    <span *ngIf="txtNombreEmpresa.errors.minlength">
+                                        ! Mínimo de caracteres 6
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <select class="form-control rounded-0" id="txtPais" required formControlName="txtPais"
+                                    [(ngModel)]="cliente.pais" (change)="changepaises($event)">
+                                    <option value=""> Escoge tu pais</option>
+                                    <option *ngFor="let pais of paises">{{pais}}</option>
+                                </select>
+                                <span *ngIf="txtPais.invalid && (txtPais.dirty || txtPais.touched)" class="text-danger">
+                                    <span *ngIf="txtPais.errors.required">
+                                        ! El campo País es obligatorio
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <input class="form-control rounded-0" id="txtNitEmpresa" type="text"
+                                    placeholder="Nit o id de la empresa" required formControlName="txtNitEmpresa"
+                                    [(ngModel)]="cliente.nitempresa">
+                                <span *ngIf="txtNitEmpresa.invalid && (txtNitEmpresa.dirty || txtNitEmpresa.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtNitEmpresa.errors.required">
+                                        ! El campo Nit es obligatorio
+                                    </span>
+                                    <span *ngIf="txtNitEmpresa.errors.minlength">
+                                        ! Minimo de dígitos 7
+                                    </span>
+                                    <span *ngIf="txtNitEmpresa.errors.maxlength">
+                                        ! Maximo de dígitos 10
+                                    </span>
+                                    <span *ngIf="txtNitEmpresa.errors.mayor0">
+                                        ! El Nit no puede ser negativo
+                                    </span>
+                                    <span *ngIf="txtNitEmpresa.errors.pattern">
+                                        ! Solo números
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <select class="form-control rounded-0" id="txtAreaInteres" required
+                                    formControlName="txtAreaInteres" [(ngModel)]="cliente.sectorinteres"
+                                    (change)="changesectores($event)">
+                                    <option value="">Sector de interés</option>
+                                    <option *ngFor="let sector of sectores">{{sector}}</option>
+                                </select>
+                                <span *ngIf="txtAreaInteres.invalid && (txtAreaInteres.dirty || txtAreaInteres.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtAreaInteres.errors.required">
+                                        ! El campo sector de interés es obligatorio
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <input class="form-control rounded-0" id="txtEmail" type="email"
+                                    placeholder="Correo Eléctronico" formControlName="txtEmail" required
+                                    [(ngModel)]="cliente.correo">
+                                <span *ngIf="txtEmail.invalid && (txtEmail.dirty || txtEmail.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtEmail.errors.required">
+                                        ! El campo Correo electrónico es obligatorio
+                                    </span>
+                                    <span *ngIf="txtEmail.errors.email">
+                                        ! Ingresar correo electrónico válido
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <input class="form-control rounded-0" id="txtPassword" type="password"
+                                    placeholder="Contraseña" required formControlName="txtPassword"
+                                    [(ngModel)]="cliente.clave">
+                                <span *ngIf="txtPassword.invalid && (txtPassword.dirty || txtPassword.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtPassword.errors.required">
+                                        ! El campo contraseña es obligatorio
+                                    </span>
+                                    <span *ngIf="txtPassword.errors.minlength">
+                                        ! Mínimo 6 carácteres
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-12">
+                                <select class="form-control rounded-0" id="txtPerfil" required
+                                    formControlName="txtPerfil" [(ngModel)]="cliente.perfil"
+                                    (change)="changeperfiles($event)">
+                                    <option value="">Confirmar Perfil</option>
+                                    <option *ngFor="let perfil of perfiles">{{perfil}}</option>
+                                </select>
+                                <span *ngIf="txtPerfil.invalid && (txtPerfil.dirty || txtPerfil.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtPerfil.errors.required">
+                                        ! El campo confirmar perfil es obligatorio
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-check col-lg-12">
+                                <input class="form-check-input" id="txtTerminosCondiciones" type="checkbox" required
+                                    formControlName="txtTerminosCondiciones">
+
+                               
+                                <label class="form-check-label" for="txtTerminosCondiciones">Acepto términos y
+                                    condiciones</label>
+                               
+                                <span
+                                    *ngIf="txtTerminosCondiciones.invalid && (txtTerminosCondiciones.dirty || txtTerminosCondiciones.touched)"
+                                    class="text-danger">
+                                    <span *ngIf="txtTerminosCondiciones.errors.required">
+                                        ! Este campo es obligatorio
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        
+
+                        <div class="text-center mt-2">
+                            <button class="btn btn-primary btn-block btn-btn" id="btnGuardar" type="submit"
+                                [disabled]="registerForm.invalid" (click)="altaClientes()">Guardar</button>
+                        </div>
+
+                        <div class="mt-2">
+                            <p>Al identificarte aceptas nuestros terminos y condiciones. <a class="text-decoration-none" id="pdfTerminos" href="https://itsa.edu.co/docs/atencion.pdf" target="_blank">Click aquí</a></p>                        
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <div>
+                        <p>¿Ya tienes una cuenta?
+                            <a class="text-decoration-none" href="login">
+                                <p>Iniciar Sesión</p>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

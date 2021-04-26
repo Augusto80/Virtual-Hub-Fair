@@ -1,0 +1,163 @@
+<br><br>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6 bg-dark-gray">
+            <!--img class="logo horizontal-logo mx-auto d-block" width="300px" src="assets/NosotrosLogo.jpg"
+                alt="M & S LTDA"-->
+            <div class="col-md-12">
+                <p class="h4 text-center font-times" style="color: rgb(1, 12, 156);">Elige tu Stand</p>
+            </div>
+
+            <div>
+                <app-carrousel></app-carrousel>
+            </div>
+        </div>
+
+        <div class="col-lg-6 bg-white">
+
+            <div class="form-row">
+                <form (submit)="submit()" [formGroup]="registerForm" onSubmit="this.reset()">
+                    <div class="form-row"><br>
+
+                        <div class="col-md-12">
+                            <p class="h4 text-center font-times" style="color: rgb(159, 161, 15);">Contenido del
+                                Stand</p>
+                        </div><br>
+
+                        <div class="form-group row col-lg-12">
+                            <label for="Url" class="control-label col-form-label col-lg-1"><span
+                                    class="badge badge-primary">1</span></label>
+                            <div class="col-lg-11">
+                                <input type="text" id="Url" class="form-control" formControlName="Url" required
+                                    placeholder="Dígite URL del video">
+                            </div>
+                            <span *ngIf="Url.invalid && (Url.dirty || Url.touched)" class="text-danger">
+                                <span *ngIf="Url.errors.required">
+                                    ! Url del video es obligatorio
+                                </span>
+                                <span *ngIf="Url.errors.minlength">
+                                    ! Mínimo de dígitos 7
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="form-group row col-lg-12">
+                            <label for="Foto" class="control-label col-form-label col-form-label col-lg-5">
+                                <span class="badge badge-primary">2</span> Subir foto corporativa</label>
+                            <div class="col-lg-7">
+                                <input type="file" id="Foto" class="form-control-sm right" formControlName="Foto">
+                            </div>
+                            <span *ngIf="Foto.invalid && (Foto.dirty || Foto.touched)" class="text-danger">
+                                <span *ngIf="Foto.errors.required">
+                                    ! Foto corporativa es obligatorio
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="form-group row col-lg-12">
+                            <label for="Logo" class="control-label col-form-label col-form-label col-lg-5"><span
+                                    class="badge badge-primary">3</span> Subir logo - Empresa</label>
+                            <div class="col-lg-7">
+                                <input type="file" id="Logo" class="form-control-sm right" formControlName="Logo">
+                            </div>
+                            <span *ngIf="Logo.invalid && (Logo.dirty || Logo.touched)" class="text-danger">
+                                <span *ngIf="Logo.errors.required">
+                                    ! Logo de la empresa es obligatorio
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="form-group row col-lg-12">
+                            <label for="Color" class="control-label col-form-label col-lg-6">Seleccionar
+                                Color del Stand </label>
+                            <div class="col-lg-6">
+                                <input type="color" class="Color" id="Color" value="#563d7c" title="Escoger Color">
+                            </div>
+                        </div>
+
+                        <hr style="width:100%;margin-left:0"><br>
+
+                        <div class="col-md-12">
+                            <p class="h4 text-center font-times" style="color: rgb(18, 44, 194);">Datos de
+                                la empresa</p>
+                        </div><br>
+
+                        <div class="form-group col-lg-12">
+                            <input type="text" class="form-control" id="NombreEmpresa" formControlName="NombreEmpresa"
+                                placeholder="Dígite nombre de la empresa" required>
+                            <span *ngIf="NombreEmpresa.invalid && (NombreEmpresa.dirty || NombreEmpresa.touched)"
+                                class="text-danger">
+                                <span *ngIf="NombreEmpresa.errors.required">
+                                    ! El campo Nombres es obligatorio
+                                </span>
+                                <span *ngIf="NombreEmpresa.errors.minlength">
+                                    ! Mínimo de caracteres 3
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                            <input type="email" class="form-control" id="Correo" formControlName="Correo" required
+                                placeholder="Dígite Correo Electrónico - Email">
+                            <span *ngIf="Correo.invalid && (Correo.dirty || Correo.touched)" class="text-danger">
+                                <span *ngIf="Correo.errors.required">
+                                    ! El campo Correo Electrónico es obligatorio
+                                </span>
+                                <span *ngIf="Correo.errors.email">
+                                    ! Ingrese un Correo Electrónico valido
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <input type="text" class="form-control" id="Direccion" formControlName="Direccion" required
+                                placeholder="Dirección">
+                            <span *ngIf="Direccion.invalid && (Direccion.dirty || Direccion.touched)"
+                                class="text-danger">
+                                <span *ngIf="Direccion.errors.required">
+                                    ! El campo Dirección es obligatorio
+                                </span>
+                                <span *ngIf="Direccion.errors.minlength">
+                                    ! Minimo de caracteres 3
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <input type="text" class="form-control" id="Telefono" formControlName="Telefono" required
+                                placeholder="Telefono">
+                            <span *ngIf="Telefono.invalid && (Telefono.dirty || Telefono.touched)" class="text-danger">
+                                <span *ngIf="Telefono.errors.required">
+                                    ! El Nro Telefono es obligatorio
+                                </span>
+                                <span *ngIf="Telefono.errors.minlength">
+                                    ! Minimo de dígitos 7
+                                </span>
+                                <span *ngIf="Telefono.errors.maxlength">
+                                    ! Maximo de dígitos 10
+                                </span>
+                                <span *ngIf="Telefono.errors.mayor0">
+                                    ! El Nro Telefono no puede ser negativo
+                                </span>
+                                <span *ngIf="Telefono.errors.pattern">
+                                    ! Solo números
+                                </span>
+                            </span>
+                        </div><br>
+
+                        <div class="center">
+                            <button type="submit()" class="btn btn-primary btn-block"
+                                [disabled]="registerForm.invalid">¡Registrate Ahora!</button>
+                        </div>
+
+                        <div class="center">
+                            <button (click)="boton()" class="btn btn-primary btn-block">HOLA MUNDO</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-dashboard-vendedor></app-dashboard-vendedor>

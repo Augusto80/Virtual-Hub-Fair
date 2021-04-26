@@ -1,0 +1,19 @@
+.container {
+    position: relative;
+    margin-left: 200px;
+    transition: margin-left 310ms;
+}
+
+@media only screen and (max-width: 1200px) {
+    
+    .container {
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+  
+    .container {
+        margin-left: 0rem;
+    }
+}

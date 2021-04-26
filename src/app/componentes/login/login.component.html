@@ -1,0 +1,92 @@
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 mt-5">
+                <div class="card shadow-lg p-3 mb-5 bg-white>">
+                    <div class="card-body">
+
+                        <form (submit)="submit()" [formGroup]="registerForm">
+                            <div class="form-row">
+                                <div class="col-lg-12">
+                                    <a id="inicio" href="inicio">
+                                        <img src="assets/LogoFeriaContraste.png" class="mx-auto d-block"
+                                            alt="Logo de la feria virtual HUB Fair contraste" width="200px">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="form-row mt-4">
+                                <div class="col-lg-12">
+                                    <p>Todos los campos son obligatorios</p>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <input class="form-control btn-input rounded-0" id="txtEmail" type="text"
+                                        placeholder="Correo Electrónico" required="true" autofocus
+                                        formControlName="txtEmail">
+                                    <span *ngIf="txtEmail.invalid && (txtEmail.dirty || txtEmail.touched)"
+                                        class="text-danger">
+                                        <span *ngIf="txtEmail.errors.required">
+                                            ! El campo Correo electrónico es obligatorio
+                                        </span>
+                                        <span *ngIf="txtEmail.errors.email">
+                                            ! Ingresar correo electrónico válido
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <input class="form-control btn-input rounded-0" id="txtPassword" type="password"
+                                        placeholder="Contraseña" required="true" formControlName="txtPassword">
+                                    <span *ngIf="txtPassword.invalid && (txtPassword.dirty || txtPassword.touched)"
+                                        class="text-danger">
+                                        <span *ngIf="txtPassword.errors.required">
+                                            ! El campo contraseña es obligatorio
+                                        </span>
+                                        <span *ngIf="txtPassword.errors.minlength">
+                                            ! Mínimo 6 carácteres
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-lg-12">
+                                    <button class="btn btn-primary btn-block btn-btn" id="btnIniciarSesion"
+                                        type="button" [disabled]="registerForm.invalid">Iniciar Sesión</button>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <a class="text-decoration-none" href="olvido-clave">
+                                    <p>¿Olvidadaste tu contraseña?</p>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <div>
+                            <p>¿Aún no tienes cuenta en Virtual HUB Fair - Video?</p>
+                            <p><a class="btn btn-outline-primary btn-block btn-btn" id="btnRegistrar"
+                                    href="perfil-registro" role="button">Regístrate</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<app-dashboard-comprador></app-dashboard-comprador>
+
+
+
+<!--div class="cuadro-login">
+    <div class="container">
+        <a href="inicio">
+            <img src="assets/logoFeria.png" class="mt-2" width="140px" alt="Logo de la feria virtual">
+        </a>
+    </div>
+</div-->

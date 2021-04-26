@@ -1,0 +1,17 @@
+.cuadro-login {
+    height: 60px;
+    background-color: #3189d4;
+}
+.btn-input {
+    height: 60px;
+}
+
+.btn-btn {
+    height: 50px;
+}
+
+.container {
+    position: relative;
+    margin-left: 50px;
+    transition: margin-left 300ms;
+}
